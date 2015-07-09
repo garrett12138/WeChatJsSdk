@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatJsSdk.SdkCore", "WeChatJsSdk.SdkCore\WeChatJsSdk.SdkCore.csproj", "{34549153-EA71-462D-8C28-789E7750E161}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatJsSdk.Utility", "WeCahtJsSdk.Utility\WeChatJsSdk.Utility.csproj", "{6A9B708F-857F-4B72-B4B3-4685A5B2BAEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatJsSdk.Demo", "WeChatJsSdk.Demo\WeChatJsSdk.Demo.csproj", "{76C205B9-5F86-4F8D-BA6F-BBA473D8A280}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34549153-EA71-462D-8C28-789E7750E161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34549153-EA71-462D-8C28-789E7750E161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34549153-EA71-462D-8C28-789E7750E161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34549153-EA71-462D-8C28-789E7750E161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9B708F-857F-4B72-B4B3-4685A5B2BAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9B708F-857F-4B72-B4B3-4685A5B2BAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9B708F-857F-4B72-B4B3-4685A5B2BAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9B708F-857F-4B72-B4B3-4685A5B2BAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76C205B9-5F86-4F8D-BA6F-BBA473D8A280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C205B9-5F86-4F8D-BA6F-BBA473D8A280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C205B9-5F86-4F8D-BA6F-BBA473D8A280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C205B9-5F86-4F8D-BA6F-BBA473D8A280}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,4 @@
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeCahtJsSdk.Utility\bin\Release\WeCahtJsSdk.Utility.dll
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeCahtJsSdk.Utility\bin\Release\WeCahtJsSdk.Utility.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeCahtJsSdk.Utility\obj\Release\WeCahtJsSdk.Utility.dll
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeCahtJsSdk.Utility\obj\Release\WeCahtJsSdk.Utility.pdb

@@ -1,0 +1,7 @@
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\obj\Debug\WeChatJsSdk.SdkCore.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\bin\Debug\WeChatJsSdk.SdkCore.dll
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\bin\Debug\WeChatJsSdk.SdkCore.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\bin\Debug\WeCahtJsSdk.Utility.dll
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\bin\Debug\WeCahtJsSdk.Utility.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\obj\Debug\WeChatJsSdk.SdkCore.dll
+c:\users\administrator\documents\visual studio 2012\Projects\WeChatJsSdk\WeChatJsSdk.SdkCore\obj\Debug\WeChatJsSdk.SdkCore.pdb
