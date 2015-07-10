@@ -39,17 +39,18 @@ namespace WeChatJsSdk.SdkCore
         /// </summary>
         /// <param name="appId">微信公众账号的AppId</param>
         /// <param name="appSecret">公众账号的appSecret</param>
-        public JSSDK(string appId, string appSecret)
+        /// <param name="debug">是否调试</param>
+        public JSSDK(string appId, string appSecret, bool debug = false)
         {
             this.appId = appId;
             this.appSecret = appSecret;
             this._cache = SimpleCacheProvider.GetInstance();
-            this._debug = System.Configuration.ConfigurationManager.AppSettings["WeChatJsDebug"].ToLower() == "true";
+            this._debug = debug;
         }
 
-        
-       
-        
+
+
+
 
         /// <summary>
         /// 生成签名的随机字符串
@@ -67,14 +68,32 @@ namespace WeChatJsSdk.SdkCore
         private string GetAccessToken()
         {
             var token = this._cache.GetCache(CACHE_TOKEN_KEY);
-            if (token != null) 
+            if (token != null)
                 return token.ToString();
 
-            string result = HttpGet(string.Format(URL_FORMAT_TOKEN, this.appId, this.appSecret));
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            dynamic jsonObj= serializer.Deserialize<dynamic>(result);
-            this._cache.SetCache(CACHE_TOKEN_KEY, jsonObj["access_token"].ToString(), 7000);
-            return jsonObj["access_token"].ToString();
+            try
+            {
+                string result = HttpGet(string.Format(URL_FORMAT_TOKEN, this.appId, this.appSecret));
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                Dictionary<string, object> jsonObj = serializer.Deserialize<dynamic>(result);
+                if (jsonObj.ContainsKey("access_token"))
+                {
+                    token = jsonObj["access_token"].ToString();
+                    this._cache.SetCache(CACHE_TOKEN_KEY, token.ToString(), 7000);
+                }
+                else
+                {
+                    //为了程序正常运行，不抛出错误，可以记录日志
+                    token = jsonObj["errmsg"];
+                }
+            }
+            catch
+            {
+                //为了程序正常运行，不抛出错误，可以记录日志
+                token = "there_is_an_error_when_getting_token";
+            }
+
+            return token.ToString();
         }
 
         /// <summary>
@@ -86,12 +105,29 @@ namespace WeChatJsSdk.SdkCore
             var ticket = this._cache.GetCache(CACHE_TICKET_KEY);
             if (ticket != null)
                 return ticket.ToString();
+            try
+            {
+                string result = HttpGet(string.Format(URL_FORMAT_TICKET, this.GetAccessToken()));
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                Dictionary<string, object> jsonObj = serializer.Deserialize<dynamic>(result);
+                if (jsonObj.ContainsKey("ticket"))
+                {
+                    ticket = jsonObj["ticket"].ToString();
+                    this._cache.SetCache(CACHE_TICKET_KEY, ticket.ToString(), 7000);
+                }
+                else
+                {
+                    //为了程序正常运行，不抛出错误，可以记录日志
+                    ticket = jsonObj["errmsg"];
+                }
+            }
+            catch
+            {
+                //为了程序正常运行，不抛出错误，可以记录日志
+                ticket = "there_is_an_error_when_getting_apiticket";
+            }
 
-            string result = HttpGet(string.Format(URL_FORMAT_TICKET,this.GetAccessToken()));
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            dynamic jsonObj = serializer.Deserialize<dynamic>(result);
-            this._cache.SetCache(CACHE_TICKET_KEY,jsonObj["ticket"].ToString(),7000);
-            return jsonObj["ticket"].ToString();
+            return ticket.ToString();
         }
         /// <summary>
         /// 获取jssdk签名配置对象
@@ -105,7 +141,7 @@ namespace WeChatJsSdk.SdkCore
             url += httpcontext.Request.ServerVariables["HTTP_HOST"];
             url += httpcontext.Request.ServerVariables["URL"];
             url += string.IsNullOrEmpty(httpcontext.Request.ServerVariables["QUERY_STRING"]) ? "" : httpcontext.Request.ServerVariables["QUERY_STRING"];
-            return GetSignPackage(url,jsapi);
+            return GetSignPackage(url, jsapi);
         }
         /// <summary>
         /// 获取jssdk签名配置对象
@@ -151,7 +187,7 @@ namespace WeChatJsSdk.SdkCore
         /// <returns>请求结果字符串</returns>
         private string HttpGet(string url)
         {
-           return new WebClient().DownloadString(url);
+            return new WebClient().DownloadString(url);
         }
 
     }

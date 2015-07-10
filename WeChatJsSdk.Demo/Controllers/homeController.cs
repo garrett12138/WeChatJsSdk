@@ -22,7 +22,17 @@ namespace WeChatJsSdk.Demo.Controllers
                 jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
              });
              */
-            JSSDK sdk = new JSSDK(System.Configuration.ConfigurationManager.AppSettings["WeChatAppId"],System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"]);
+            /* web.config 设置appid,appsecret,dubug
+               <appSettings>
+                <add key="WeChatAppId" value="your appid here"/>
+                <add key="WeChatAppSecret" value="your appsecret here"/>
+                <add key="WeChatJsDebug" value="true"/>
+              </appSettings> 
+            */
+            string appId = System.Configuration.ConfigurationManager.AppSettings["WeChatAppId"];
+            string appSecret = System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"];
+            bool debug = System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"].ToLower() == "true";
+            JSSDK sdk = new JSSDK(appId,appSecret,debug);
             SignPackage config = sdk.GetSignPackage(JsApiEnum.scanQRCode|JsApiEnum.onMenuShareQQ);
             System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
             ViewBag.config = serializer.Serialize(config);
