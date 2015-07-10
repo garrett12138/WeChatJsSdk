@@ -3,7 +3,7 @@
 //  Implementation of the Class JSSDK
 //  Created on:      09-七月-2015 15:11:31
 //  Original author: nboss
-//
+//  查看更新：https://github.com/nboss/WeChatJsSdk
 ///////////////////////////////////////////////////////////
 
 using System;
