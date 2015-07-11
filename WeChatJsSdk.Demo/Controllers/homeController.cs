@@ -31,9 +31,13 @@ namespace WeChatJsSdk.Demo.Controllers
             */
             string appId = System.Configuration.ConfigurationManager.AppSettings["WeChatAppId"];
             string appSecret = System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"];
-            bool debug = System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"].ToLower() == "true";
+            bool debug = System.Configuration.ConfigurationManager.AppSettings["WeChatJsDebug"].ToLower() == "true";
             JSSDK sdk = new JSSDK(appId,appSecret,debug);
-            SignPackage config = sdk.GetSignPackage(JsApiEnum.scanQRCode|JsApiEnum.onMenuShareQQ);
+            
+            //0x3ffffffff 是使用全部接口
+            JsApiEnum jsApilist = (JsApiEnum)0x3ffffffff;
+
+            SignPackage config = sdk.GetSignPackage(jsApilist);
             System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
             ViewBag.config = serializer.Serialize(config);
             //string str_config = "{";
@@ -51,6 +55,8 @@ namespace WeChatJsSdk.Demo.Controllers
             //}
             //str_config += "]}";
             //ViewBag.config = str_config;
+
+
             return View();
         }
 

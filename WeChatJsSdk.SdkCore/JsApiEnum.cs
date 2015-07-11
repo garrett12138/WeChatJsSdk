@@ -16,7 +16,7 @@ namespace WeChatJsSdk.SdkCore
         stopRecord = 0x20,
         onVoiceRecordEnd = 0x40,
         playVoice = 0x80,
-        pauseVoice = 100,
+        pauseVoice = 0x100,
         stopVoice = 0x200,
         onVoicePlayEnd = 0x400,
         uploadVoice = 0x800,
