@@ -140,7 +140,7 @@ namespace WeChatJsSdk.SdkCore
             string url = (!string.IsNullOrEmpty(httpcontext.Request.ServerVariables["HTTPS"])) && httpcontext.Request.ServerVariables["HTTPS"] != "off" ? "https://" : "http://";
             url += httpcontext.Request.ServerVariables["HTTP_HOST"];
             url += httpcontext.Request.ServerVariables["URL"];
-            url += string.IsNullOrEmpty(httpcontext.Request.ServerVariables["QUERY_STRING"]) ? "" : httpcontext.Request.ServerVariables["QUERY_STRING"];
+            url += string.IsNullOrEmpty(httpcontext.Request.ServerVariables["QUERY_STRING"]) ? "" : ("?"+httpcontext.Request.ServerVariables["QUERY_STRING"]);
             return GetSignPackage(url, jsapi);
         }
         /// <summary>
