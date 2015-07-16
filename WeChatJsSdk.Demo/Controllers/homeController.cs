@@ -33,7 +33,9 @@ namespace WeChatJsSdk.Demo.Controllers
             string appSecret = System.Configuration.ConfigurationManager.AppSettings["WeChatAppSecret"];
             bool debug = System.Configuration.ConfigurationManager.AppSettings["WeChatJsDebug"].ToLower() == "true";
             JSSDK sdk = new JSSDK(appId,appSecret,debug);
-            
+
+            //JsApiEnum使用方法
+            //JsApiEnum jsApilist = JsApiEnum.onMenuShareQQ | JsApiEnum.chooseImage;
             //0x3ffffffff 是使用全部接口
             JsApiEnum jsApilist = (JsApiEnum)0x3ffffffff;
 
